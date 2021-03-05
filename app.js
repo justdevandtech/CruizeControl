@@ -72,7 +72,8 @@ function app() {
          </div>
          <button class="playBtn border border-success px-3"><i class="fas fa-play-circle"></i></button>
           <button class="pauseBtn border border-success px-3"><i class="fas fa-pause-circle"></i></button>
-          <button class="border float-end border-success h-25 px-3"><div class="fb-like" data-href="index.html" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div></button>
+          <button class="border float-end border-success h-25 px-3"><i class="far fa-thumbs-up"></i></button>
+          <hr>
          </div>
          `   
     });
