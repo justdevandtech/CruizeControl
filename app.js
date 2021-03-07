@@ -55,11 +55,15 @@ btns.forEach((item) => {
 
 window.addEventListener('DOMContentLoaded', () => {
     app();
+    let playbtn = box.querySelectorAll(".playBtn");
+    playbtn.forEach((btns) => {
+        btns.style.display = "block"
+    })
 });
 
 
 function app() {
-    let tin = music.map((item) => {
+    let songs = music.map((item) => {
          box.innerHTML += `<di id="cont">
          <div class="wrapper">
          <img  id="artistImg" src="https://images.pexels.com/photos/1436141/pexels-photo-1436141.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
@@ -72,11 +76,26 @@ function app() {
          </div>
          <button class="playBtn border border-success px-3"><i class="fas fa-play-circle"></i></button>
           <button class="pauseBtn border border-success px-3"><i class="fas fa-pause-circle"></i></button>
-          <button class="border float-end border-success h-25 px-3"><i class="far fa-thumbs-up"></i></button>
+          <button class="border float-end border-success h-25 px-3"><i class="far fa-thumbs-up"></i><span>11111<span></button>
+           <button class="comment border float-end border-success me-2 h-25 px-3"><i class="far fa-comments"></i></button>
           <hr>
          </div>
          `   
     });
+
+    const commentbtn = box.querySelectorAll('.comment');
+    const commentbox = document.querySelector('.commentbox');
+    const commentclosebtn = document.querySelectorAll('.commentclosebtn');
+    commentbtn.forEach((Comments) => {
+        Comments.addEventListener('click', () => {
+            commentbox.classList.add('show')
+        })
+    });
+    commentclosebtn.forEach((commentclose) => {
+        commentclose.addEventListener('click', () => {
+            commentbox.classList.remove('show')
+        })
+    })
 
     const cont = document.querySelectorAll('#cont');
     cont.forEach((tinz) => {
