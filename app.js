@@ -66,7 +66,7 @@ function app() {
     let songs = music.map((item) => {
          box.innerHTML += `<di id="cont">
          <div class="wrapper">
-         <img  id="artistImg" src="https://images.pexels.com/photos/1436141/pexels-photo-1436141.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+         <img  id="artistImg" src="img/artists-img.jpg" alt="">
          <div class="artistdecr mt-3">
          <h2>${item.aud[2].toUpperCase() + "#" + item.id + " " + item.aud.slice(9, 29)}...</h2>
          <p>${item.aud.toString().slice(9, 30)}...</P>
