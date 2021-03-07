@@ -53,7 +53,7 @@ btns.forEach((item) => {
  */
 
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
     app();
     let playbtn = box.querySelectorAll(".playBtn");
     playbtn.forEach((btns) => {
