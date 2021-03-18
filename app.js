@@ -60,7 +60,7 @@ window.addEventListener('load', () => {
         btns.style.display = "block"
     })
     }, 2000);
-     alert("Welcome to CruizeControl. Please kindly note that things posted are for entertainment purepose only, with vision to help our local artists promote their song.")
+     alert("Welcome to CruizeControl. Please kindly note that things posted here are for entertainment pureposes only, with vision to help our local artists promote their songs.")
     
      poper.classList.remove('show') 
 });
