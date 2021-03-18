@@ -163,8 +163,8 @@ function app() {
                 } 
                 else {
                     aud.play();
-                   /*  poper.classList.add('show'); */
-                   /*  poper.innerHTML = "song will play and stop once the counter is 10" */
+                    poper.classList.add('show'); 
+                    poper.innerHTML = "refresh your browser incase songs does not play" 
                     playBtn.style.display = 'none'
                     pauseBtn.style.display = "block"
                     artistimg.classList.add("rotate_aristeimg");
