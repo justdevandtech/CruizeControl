@@ -65,12 +65,23 @@ animation: rotation 8s infinite linear;
 
 .audiopopper {
     position: absolute;
-    background-color: aquamarine;
-    top: 180px;
+    background-color: rgb(21, 95, 70);
+    color: white;
+   /*  top: 180px; */
     width: 60%;
     left: 50px;
     right: 50px;
+    bottom: 50px;
     padding: 20px;
+    position: fixed;
+}
+@media (max-width: 600px){
+    .audiopopper{
+        width: 100%;
+         left: 10px;
+        right: 10px;
+        
+    }
 }
 
 .commentbox {
@@ -95,6 +106,10 @@ animation: rotation 8s infinite linear;
 }
 .showtime, .audiopopper, .commentbox {
     visibility: hidden;
+    font-weight: bolder;
+}
+.showtime {
+    font-size: 15px;
     font-weight: bolder;
 }
 

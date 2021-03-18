@@ -1,33 +1,45 @@
 const music = [
     {
         id: 1,
-        "txt": "artist",
-        "aud": "./musics/Wizkid-ft-Burna-Boy-Ginger.mp3"
+        "desc": "Ginger",
+        "aud": "./musics/Wizkid-ft-Burna-Boy-Ginger.mp3",
+        "original_song": "https://audiomack.com/embed/song/wizkid/ginger?background=1&color=417505"
     },
      {
          id: 2,
-        "txt": "artist",
-        "aud": "./musics/Wizkid-ft-Damian-Marley-Blessed.mp3"
+        "desc": "Blessed",
+        "aud": "./musics/Wizkid-ft-Damian-Marley-Blessed.mp3",
+        "original_song": "https://audiomack.com/embed/song/wizkid/blessed?background=1&color=417505"
     },
      {
          id: 3,
-        "txt": "artist",
-        "aud": "./musics/Wizkid-ft-Drake-Skepta-Ojuelegba-Remix-.mp3"
+        "desc": "Jowo",
+        "aud": "./musics/Davido-Jowo.mp3",
+        "original_song": "https://audiomack.com/embed/song/davido/jowo?background=1&color=417505"
     },
      {
          id: 4,
-        "txt": "artist",
-        "aud": "./musics/Wizkid-ft-Ella-Mai-Piece-Of-Me.mp3"
+        "desc": "for you",
+        "aud": "./musics/Teni-For-You-ft-Davido.mp3",
+        "original_song": "https://audiomack.com/embed/song/tenientertainer/for-you?background=1"
     },
-         {
+     {
          id: 5,
-        "txt": "artist",
-        "aud": "./musics/Wizkid-ft-Skepta-Longtime.mp3"
+        "desc": "Piece in Me",
+        "aud": "./musics/Wizkid-ft-Ella-Mai-Piece-Of-Me.mp3",
+        "original_song": "https://audiomack.com/embed/song/wizkid/piece-of-me?background=1&color=417505"
     },
          {
          id: 6,
-        "txt": "artist",
-        "aud": "./musics/Wizkid-ft-Tay-Iwar-Projexx-True-Love.mp3"
+        "desc": "Longtime",
+        "aud": "./musics/Wizkid-ft-Skepta-Longtime.mp3",
+        "original_song": "https://audiomack.com/embed/song/wizkid/longtime?background=1&color=417505"
+    },
+         {
+         id: 7,
+        "desc": "True Love",
+        "aud": "./musics/Wizkid-ft-Tay-Iwar-Projexx-True-Love.mp3",
+        "original_song": "https://audiomack.com/embed/song/wizkid/true-love?background=1&color=417505"
     }
       
       
@@ -38,27 +50,19 @@ const poper = document.querySelector('.audiopopper');
 const btns = document.querySelectorAll('button');
 let bAudio = document.getElementById('b_audio');
 
-/* 
-btns.forEach((item) => {
-    if (item.innerText == "") {
-        if (item.classList.contains('play')) {
-            item.innerText = "play"
-        }else if (item.classList.contains('forward')) {
-            item.innerText = '>>'
-        }else{
-            item.innerText = '<<'
-        }
-    }
-});
- */
 
 
 window.addEventListener('load', () => {
-    app();
-    let playbtn = box.querySelectorAll(".playBtn");
-    playbtn.forEach((btns) => {
+    setTimeout(() => {
+        app();
+         let playbtn = box.querySelectorAll(".playBtn");
+       playbtn.forEach((btns) => {
         btns.style.display = "block"
     })
+    }, 2000);
+     alert("Welcome to CruizeControl. Please kindly note that things posted are for entertainment purepose only, with vision to help our local artists promote their song.")
+    
+     poper.classList.remove('show') 
 });
 
 
@@ -69,9 +73,9 @@ function app() {
          <img  id="artistImg" src="img/artists-img.jpg" alt="">
          <div class="artistdecr mt-3">
          <h2>${item.aud[2].toUpperCase() + "#" + item.id + " " + item.aud.slice(9, 29)}...</h2>
-         <p>${item.aud.toString().slice(9, 30)}...</P>
+         <p>${item.desc}</P>
          <audio src=${item.aud}></audio>
-         <div class="showtime border text-center w-25 mx-auto h-25 p-2 m-4"></div>
+         <div class="showtime border text-center mx-auto h-25 p-2 m-4"></div>
          </div>
          </div>
          <button class="playBtn border border-success px-3"><i class="fas fa-play-circle"></i></button>
@@ -81,6 +85,8 @@ function app() {
           <hr>
          </div>
          `   
+
+
     });
 
     const commentbtn = box.querySelectorAll('.comment');
@@ -100,12 +106,14 @@ function app() {
     const cont = document.querySelectorAll('#cont');
     cont.forEach((tinz) => {
         let interV;
+        const poper = document.querySelector('.audiopopper');
         const aud = tinz.querySelector('audio')
         let artistimg = tinz.querySelector("#artistImg");
         let playBtn = tinz.querySelector('.playBtn');
         let pauseBtn = tinz.querySelector('.pauseBtn');
         pauseBtn.style.display = "none"
         playBtn.addEventListener('click', () => {
+
             cont.forEach((items) => {
 
 
@@ -113,18 +121,22 @@ function app() {
 
                 function songUpTime() {
                     count++;
-                    showTime.innerText = count;
+                   /*  showTime.innerText = count; */
+                    showTime.innerText = "Now playing..."
 
-                     
-                    if (count == 10 || count === 10) {
+                   /*   
+                    if (count == 30 || count === 30) {
+                        poper.classList.remove('show')
+                        poper.innerHTML = `<iframe src=${music[0].original_song} scrolling="no" width="100%" height="150" scrollbars="no" frameborder="0"></iframe>` 
                         artistimg.classList.remove("rotate_aristeimg");
-                        aud.pause();
+                         aud.pause(); 
                         clearInterval(interV);
                         count = 0;
                         aud.currentTime = 0;
                         playBtn.style.display = 'block';
                         pauseBtn.style.display = "none";
-                    }
+                       
+                    }  */
                 }
                 
                  function songTimeStamp() {
@@ -151,10 +163,15 @@ function app() {
                 } 
                 else {
                     aud.play();
+                   /*  poper.classList.add('show'); */
+                   /*  poper.innerHTML = "song will play and stop once the counter is 10" */
                     playBtn.style.display = 'none'
                     pauseBtn.style.display = "block"
                     artistimg.classList.add("rotate_aristeimg");
                     showTime.classList.add('show');
+                    if (aud.ended) {
+                        alert('endeddddd')
+                    }
                     songTimeStamp();
                 }
             });
