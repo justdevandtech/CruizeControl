@@ -45,7 +45,7 @@ const music = [
       
 ]
 
-let box = document.getElementById('box');
+const box = document.getElementById('box');
 const poper = document.querySelector('.audiopopper');
 const btns = document.querySelectorAll('button');
 let bAudio = document.getElementById('b_audio');
@@ -68,7 +68,7 @@ window.addEventListener('load', () => {
 
 function app() {
     let songs = music.map((item) => {
-         return `<di id="cont">
+         box.innerHTML += `<di id="cont">
          <div class="wrapper">
          <img  id="artistImg" src="img/artists-img.jpg" alt="">
          <div class="artistdecr mt-3">
@@ -92,7 +92,7 @@ function app() {
 
 
     });
-box.innerHTML = songs
+
     const commentbtn = box.querySelectorAll('.comment');
     const audioFram = box.querySelectorAll('.ifram');
     const commentclosebtn = document.querySelectorAll('.commentclosebtn');
