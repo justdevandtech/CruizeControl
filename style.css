@@ -3,6 +3,29 @@ body {
     background-color: #f1f1f1;
 }
 
+header {
+    background: url(./img/bg-bagacian-1337753.jpg)no-repeat center/cover;
+    height: 350px;
+    position: relative;
+    margin-bottom: 20px;
+    
+}
+
+.header_layer {
+background-color: rgba(0, 0, 0, 0.7);
+position: absolute;
+top: 0;
+bottom: 0;
+right: 0;
+left: 0;
+color: white;
+text-align: center;
+}
+
+.header_layer p{
+    margin-top: 100px;
+}
+
 .wrapper{
     display: flex;
     margin-bottom: 20px;
@@ -13,11 +36,10 @@ body {
 
 .playBtn {
     display: none;
+    z-index: 200px;
 } 
 
 #cont {
-     background-color: rgb(236, 236, 230);
-     padding: 10px;
      margin: 20px 0px;
 }
 
@@ -104,7 +126,7 @@ animation: rotation 8s infinite linear;
       position: fixed;
   }
 }
-.showtime, .audiopopper, .commentbox {
+.showtime, .audiopopper, .commentbox{
     visibility: hidden;
     font-weight: bolder;
 }
@@ -115,4 +137,13 @@ animation: rotation 8s infinite linear;
 
 .show {
     visibility: visible;
+}
+
+.ifram {
+    margin-bottom: 10px;
+    display: none;
+}
+
+.ifram_show {
+    display: block;
 }

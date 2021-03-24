@@ -20,7 +20,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+     <!--  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
@@ -41,16 +41,21 @@
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
-      </ul>
+      </ul> -->
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <input class="form-control me-2 mt-3" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success mt-3" type="submit">Search</button>
       </form>
     </div>
   </div>
 </nav>
 
-
+ <header class="">
+<div class="header_layer">
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate, vitae impedit. Explicabo, quod ipsam facilis reiciendis aliquid dolorem? Corrupti, cum!</p>
+  <hr class="w-50 mx-auto">
+</div>
+    </header>
 
   <div class="container">
 <div class="border mt-3 p-2" id="box">
@@ -87,15 +92,24 @@
 </div>
 
 
-
+<!-- 
 <div class="playerfooter bg-success p-3">
 <div class="playerbtns">
   <audio id="b_audio" src=""></audio>
   <button class="border backward"><i class="fas fa-backward"></i></button>
   <button class="border play"><i class="fas fa-play-circle"></i></button>
   <button class="border forward"><i class="fas fa-forward"></i></button>
+</div> -->
+<div class="container">
+<footer class="mt-4 text-center fs-2"></footer>
 </div>
-</div>
+
+
+<script>
+  let day = new Date();
+  let yr = day.getFullYear()
+  document.querySelector('footer').innerHTML = yr
+</script>
 
 
 

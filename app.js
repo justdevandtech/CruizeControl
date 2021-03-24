@@ -59,8 +59,8 @@ window.addEventListener('load', () => {
        playbtn.forEach((btns) => {
         btns.style.display = "block"
     })
-    }, 2000);
-     alert("Welcome to CruizeControl. Please kindly note that things posted here are for entertainment pureposes only, with vision to help our local artists promote their songs.")
+    }, 100);
+    /*  alert("Welcome to CruizeControl. Please kindly note that things posted here are for entertainment pureposes only, with vision to help our local artists promote their songs.") */
     
      poper.classList.remove('show') 
 });
@@ -75,9 +75,13 @@ function app() {
          <h2>${item.aud[2].toUpperCase() + "#" + item.id + " " + item.aud.slice(9, 29)}...</h2>
          <p>${item.desc}</P>
          <audio src=${item.aud}></audio>
-         <div class="showtime border text-center mx-auto h-25 p-2 m-4"></div>
+         <span class="showtime border text-center mx-auto h-25 p-2"></span>
          </div>
          </div>
+         <span class="mb-3">
+         <iframe class="rounded ifram"  src=${item.original_song} scrolling="no" width="100%" height="150" scrollbars="no" frameborder="0"></iframe>
+         
+         </span>
          <button class="playBtn border border-success px-3"><i class="fas fa-play-circle"></i></button>
           <button class="pauseBtn border border-success px-3"><i class="fas fa-pause-circle"></i></button>
           <button class="border float-end border-success h-25 px-3"><i class="far fa-thumbs-up"></i><span>11111<span></button>
@@ -90,7 +94,7 @@ function app() {
     });
 
     const commentbtn = box.querySelectorAll('.comment');
-    const commentbox = document.querySelector('.commentbox');
+    const audioFram = box.querySelectorAll('.ifram');
     const commentclosebtn = document.querySelectorAll('.commentclosebtn');
     commentbtn.forEach((Comments) => {
         Comments.addEventListener('click', () => {
@@ -111,6 +115,8 @@ function app() {
         let artistimg = tinz.querySelector("#artistImg");
         let playBtn = tinz.querySelector('.playBtn');
         let pauseBtn = tinz.querySelector('.pauseBtn');
+        let audioFram = tinz.querySelector('.ifram');
+        
         pauseBtn.style.display = "none"
         playBtn.addEventListener('click', () => {
 
@@ -121,13 +127,8 @@ function app() {
 
                 function songUpTime() {
                     count++;
-                   /*  showTime.innerText = count; */
-                    showTime.innerText = "Now playing..."
-
-                   /*   
-                    if (count == 30 || count === 30) {
-                        poper.classList.remove('show')
-                        poper.innerHTML = `<iframe src=${music[0].original_song} scrolling="no" width="100%" height="150" scrollbars="no" frameborder="0"></iframe>` 
+                    showTime.innerText = count; 
+                    if (count == 3 || count === 3) {
                         artistimg.classList.remove("rotate_aristeimg");
                          aud.pause(); 
                         clearInterval(interV);
@@ -135,8 +136,10 @@ function app() {
                         aud.currentTime = 0;
                         playBtn.style.display = 'block';
                         pauseBtn.style.display = "none";
+                        audioFram.style.display = "block"
+                        
                        
-                    }  */
+                    }  
                 }
                 
                  function songTimeStamp() {
@@ -150,7 +153,6 @@ function app() {
                  let artistimg = items.querySelector("#artistImg");
                 let showTime = items.querySelector('.showtime');
                 let pauseBtn = items.querySelector('.pauseBtn');
-                
                 if (items !== tinz || tinz !== items) {
                     count = 0;
                      aud.pause();
@@ -163,15 +165,16 @@ function app() {
                 } 
                 else {
                     aud.play();
+                    audioFram.style.display = "none"
                     poper.classList.add('show'); 
-                    poper.innerHTML = "refresh your browser incase songs does not play" 
+                    poper.innerHTML = "refresh your browser incase songs does not play";
+                    setTimeout(() => {
+                        poper.classList.remove('show')
+                    }, 3000);
                     playBtn.style.display = 'none'
                     pauseBtn.style.display = "block"
                     artistimg.classList.add("rotate_aristeimg");
                     showTime.classList.add('show');
-                    if (aud.ended) {
-                        alert('endeddddd')
-                    }
                     songTimeStamp();
                 }
             });
@@ -187,7 +190,7 @@ function app() {
 
     });
 
-    //play, forward and backward songs func
+   /*  //play, forward and backward songs func
     let songsIndex = 0;
     bAudio.src = music[songsIndex].aud;
 
@@ -207,5 +210,5 @@ function app() {
             }
         });
     })
-
+ */
 }
