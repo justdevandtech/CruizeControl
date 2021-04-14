@@ -1,4 +1,28 @@
-const music = [
+else if (playing !== undefined) {
+                    playing.then(_ => {
+                    // Automatic playback started!
+                    // Show playing UI.
+                    })
+                    .catch(error => {
+                    // Auto-play was prevented
+                    // Show paused UI.
+                    });
+
+                    audioFram.style.display = "none"
+                    poper.classList.add('show'); 
+                    poper.innerHTML = "refresh your browser incase songs does not play";
+                    setTimeout(() => {
+                        poper.classList.remove('show')
+                    }, 3000);
+                    playBtn.style.display = 'none'
+                    pauseBtn.style.display = "block"
+                    artistimg.classList.add("rotate_aristeimg");
+                    showTime.classList.add('show');
+                    songTimeStamp();
+                }
+
+
+                const music = [
     {
         id: 1,
         "desc": "Ginger",
@@ -70,7 +94,7 @@ function app() {
     let songs = music.map((item) => {
          box.innerHTML += `<di id="cont">
          <div class="wrapper">
-         <img  id="artistImg" src="img/vinyl.jpg" alt="">
+         <img  id="artistImg" src="img/artists-img.jpg" alt="">
          <div class="artistdecr mt-3">
          <h2>${item.aud[2].toUpperCase() + "#" + item.id + " " + item.aud.slice(9, 29)}...</h2>
          <p>${item.desc}</P>
@@ -111,12 +135,11 @@ function app() {
     cont.forEach((tinz) => {
         let interV;
         const poper = document.querySelector('.audiopopper');
-        /* const aud = tinz.querySelector('audio') */
+        const aud = tinz.querySelector('audio')
         let artistimg = tinz.querySelector("#artistImg");
         let playBtn = tinz.querySelector('.playBtn');
         let pauseBtn = tinz.querySelector('.pauseBtn');
         let audioFram = tinz.querySelector('.ifram');
-        
         
         pauseBtn.style.display = "none"
         playBtn.addEventListener('click', () => {
@@ -129,7 +152,7 @@ function app() {
                 function songUpTime() {
                     count++;
                     showTime.innerText = count; 
-                    if (count == 10 || count === 10) {
+                    if (count == 3 || count === 3) {
                         artistimg.classList.remove("rotate_aristeimg");
                          aud.pause(); 
                         clearInterval(interV);
@@ -154,7 +177,6 @@ function app() {
                  let artistimg = items.querySelector("#artistImg");
                 let showTime = items.querySelector('.showtime');
                 let pauseBtn = items.querySelector('.pauseBtn');
-                let playing = aud.play();
                 if (items !== tinz || tinz !== items) {
                     count = 0;
                      aud.pause();
@@ -164,28 +186,8 @@ function app() {
                      aud.currentTime = 0;
                      showTime.innerText = ""
                      showTime.classList.remove('show');
-                } else if (playing !== undefined) {
-                    playing.then(_ => {
-                    // Automatic playback started!
-                    // Show playing UI.
-                    })
-                    .catch(error => {
-                    // Auto-play was prevented
-                    // Show paused UI.
-                    });
-                    audioFram.style.display = "none"
-                    poper.classList.add('show'); 
-                    poper.innerHTML = "refresh your browser incase songs does not play";
-                    setTimeout(() => {
-                        poper.classList.remove('show')
-                    }, 3000);
-                    playBtn.style.display = 'none'
-                    pauseBtn.style.display = "block"
-                    artistimg.classList.add("rotate_aristeimg");
-                    showTime.classList.add('show');
-                    songTimeStamp();
-                }
-               /*  else {
+                } 
+                else {
                     aud.play();
                     audioFram.style.display = "none"
                     poper.classList.add('show'); 
@@ -198,7 +200,7 @@ function app() {
                     artistimg.classList.add("rotate_aristeimg");
                     showTime.classList.add('show');
                     songTimeStamp();
-                } */
+                }
             });
            
         });

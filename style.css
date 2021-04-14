@@ -4,7 +4,7 @@ body {
 }
 
 header {
-    background: url(./img/bg-bagacian-1337753.jpg)no-repeat center/cover;
+    background: url(./img/hero-img.jpg)no-repeat center/cover;
     height: 350px;
     position: relative;
     margin-bottom: 20px;
@@ -24,6 +24,7 @@ text-align: center;
 
 .header_layer p{
     margin-top: 100px;
+    padding: 10px;
 }
 
 .wrapper{
