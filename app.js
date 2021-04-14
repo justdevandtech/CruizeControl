@@ -164,14 +164,34 @@ function app() {
                      aud.currentTime = 0;
                      showTime.innerText = ""
                      showTime.classList.remove('show');
-                } else if (playing !== undefined) {
+                } 
+                 if (playing) {
+          playing.then(() => {
+              // audio loaded successfully
+                             // Audio playback requires time-consuming
+              setTimeout(() => {
+                                     // subsequent operations
+                  console.log("done");
+                             }, aud.duration * 1000); // audio.duration the audio duration in seconds
+ 
+ 
+          }).catch((e) => {
+              console.log("Operation is too fast, audio play fails");
+          });
+      }
+                /* else if (playing !== undefined) {
                     playing.then(_ => {
                     // Automatic playback started!
                     // Show playing UI.
+                                  setTimeout(() => {
+                                     // subsequent operations
+                  console.log("done");
+                             }, aud.duration * 1000);
                     })
                     .catch(error => {
                     // Auto-play was prevented
                     // Show paused UI.
+                    console.log(error);
                     });
                     audioFram.style.display = "none"
                     poper.classList.add('show'); 
@@ -184,7 +204,7 @@ function app() {
                     artistimg.classList.add("rotate_aristeimg");
                     showTime.classList.add('show');
                     songTimeStamp();
-                }
+                } */
                /*  else {
                     aud.play();
                     audioFram.style.display = "none"
