@@ -164,8 +164,8 @@ function app() {
                      aud.currentTime = 0;
                      showTime.innerText = ""
                      showTime.classList.remove('show');
-                } if (playing !== undefined) {
-                    playing.then( () => {
+                } else if (playing !== undefined) {
+                    playing.then( ()=> {
                     // Automatic playback started!
                     // Show playing UI.
                                   setTimeout(() => {
