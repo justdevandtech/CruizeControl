@@ -1,47 +1,40 @@
 const songs = [
-    {
-        id: 1,
-        "desc": "Ginger",
-        "aud": "./musics/Wizkid-ft-Burna-Boy-Ginger.mp3",
-        "original_song": "https://audiomack.com/embed/song/wizkid/ginger?background=1&color=417505"
-    },
-     {
-         id: 2,
-        "desc": "Blessed",
-        "aud": "./musics/Wizkid-ft-Damian-Marley-Blessed.mp3",
-        "original_song": "https://audiomack.com/embed/song/wizkid/blessed?background=1&color=417505"
-    },
-     {
-         id: 3,
-        "desc": "Jowo",
-        "aud": "./musics/Davido-Jowo.mp3",
-        "original_song": "https://audiomack.com/embed/song/davido/jowo?background=1&color=417505"
-    },
-     {
-         id: 4,
-        "desc": "for you",
-        "aud": "./musics/Teni-For-You-ft-Davido.mp3",
-        "original_song": "https://audiomack.com/embed/song/tenientertainer/for-you?background=1"
-    },
-     {
-         id: 5,
-        "desc": "Piece in Me",
-        "aud": "./musics/Wizkid-ft-Ella-Mai-Piece-Of-Me.mp3",
-        "original_song": "https://audiomack.com/embed/song/wizkid/piece-of-me?background=1&color=417505"
-    },
-         {
-         id: 6,
-        "desc": "Longtime",
-        "aud": "./musics/Wizkid-ft-Skepta-Longtime.mp3",
-        "original_song": "https://audiomack.com/embed/song/wizkid/longtime?background=1&color=417505"
-    },
-         {
-         id: 7,
-        "desc": "True Love",
-        "aud": "./musics/Wizkid-ft-Tay-Iwar-Projexx-True-Love.mp3",
-        "original_song": "https://audiomack.com/embed/song/wizkid/true-love?background=1&color=417505"
-    }   
-]
+  {
+    id: 1,
+    desc: "cali",
+    aud: "./musicFolder/cali-1171.mp3",
+  },
+  {
+    id: 2,
+    desc: "cancion-triste",
+    aud: "./musicFolder/cancion-triste-1502.mp3",
+  },
+  {
+    id: 3,
+    desc: "dreamy-piano",
+    aud: "./musicFolder/dreamy-piano-soft-sound-ambient-background-4049.mp3",
+  },
+  {
+    id: 4,
+    desc: "female-voice-and-electronica",
+    aud: "./musicFolder/female-voice-and-electronica-2-3496.mp3",
+  },
+  {
+    id: 5,
+    desc: "hip-hop-lo-fi-4387",
+    aud: "./musicFolder/hip-hop-lo-fi-4387.mp3",
+  },
+  {
+    id: 6,
+    desc: "mezhdunami-uncut-gems",
+    aud: "./musicFolder/mezhdunami-uncut-gems-1198.mp3",
+  },
+  {
+    id: 7,
+    desc: "modular-ambient",
+    aud: "./musicFolder/modular-ambient-04-792.mp3",
+  },
+];
 
 
 function musicApp() {

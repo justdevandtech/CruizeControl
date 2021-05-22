@@ -39,10 +39,7 @@ text-align: center;
  .pauseBtn {
     display: none;
 } 
-/* 
-#songsContainer {
-     margin: 20px 0px;
-} */
+
 
 #songsContainer:last-child {
     margin-bottom: 50px;
