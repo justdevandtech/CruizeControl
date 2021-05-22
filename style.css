@@ -35,16 +35,16 @@ text-align: center;
     position: relative;
 }
 
-.playBtn {
+/* .playBtn {
     display: none;
     z-index: 200px;
-} 
+}  */
 
-#cont {
+#songsContainer {
      margin: 20px 0px;
 }
 
-#cont h2 {
+#songsContainer h2 {
     font-size: 15px;
 }
 

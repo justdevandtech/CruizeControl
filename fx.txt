@@ -1,0 +1,60 @@
+
+                let count = 0;
+
+                function songUpTime() {
+                    count++;
+                    showTime.innerText = count; 
+                    if (count == 10 || count === 10) {
+                        artistimg.classList.remove("rotate_aristeimg");
+                         aud.pause(); 
+                        clearInterval(interV);
+                        count = 0;
+                        aud.currentTime = 0;
+                        playBtn.style.display = 'block';
+                        pauseBtn.style.display = "none";
+                        audioFram.style.display = "block"
+                        
+                       
+                    }  
+                }
+                
+                 function songTimeStamp() {
+                  interV = setInterval(() => {
+                         songUpTime();
+                     }, 1000);
+                 }
+
+                const aud = items.querySelector('audio')
+                let playBtn = items.querySelector('.playBtn');
+                 let artistimg = items.querySelector("#artistImg");
+                let showTime = items.querySelector('.showtime');
+                let pauseBtn = items.querySelector('.pauseBtn');
+
+                
+                if (items !== tinz || tinz !== items) {
+                    count = 0;
+                     aud.pause();
+                     playBtn.style.display = 'block';
+                      pauseBtn.style.display = "none";
+                      artistimg.classList.remove("rotate_aristeimg");
+                     aud.currentTime = 0;
+                     showTime.innerText = ""
+                     showTime.classList.remove('show');
+                } 
+                else {
+                    aud.play();
+                    audioFram.style.display = "none"
+                    poper.classList.add('show'); 
+                    poper.innerHTML = "refresh your browser incase songs does not play";
+                    setTimeout(() => {
+                        poper.classList.remove('show')
+                    }, 3000);
+                    playBtn.style.display = 'none'
+                    pauseBtn.style.display = "block"
+                    artistimg.classList.add("rotate_aristeimg");
+                    showTime.classList.add('show');
+                    songTimeStamp();
+                }
+            });
+           
+        });
