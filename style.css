@@ -35,10 +35,9 @@ text-align: center;
     position: relative;
 }
 
-/* .playBtn {
+ .pauseBtn {
     display: none;
-    z-index: 200px;
-}  */
+} 
 
 #songsContainer {
      margin: 20px 0px;

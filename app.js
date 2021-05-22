@@ -81,14 +81,37 @@ for (let i = 0; i < songsContainer.length; i++) {
  let audio = songsContainer[i].querySelector("audio");
  let playBtn = songsContainer[i].querySelector(".playBtn");
  let pauseBtn = songsContainer[i].querySelector(".pauseBtn");
+ 
 
- pauseBtn.style.display = "none";
+function pauseBtnFunc() {
+    let paBtn = document.querySelectorAll('.pauseBtn');
+    for (let pb = 0; pb < paBtn.length; pb++) {
+      paBtn[pb].style.display = "none"
+    }
+}
+
+function playBtnFunc() {
+        let plaBtn = document.querySelectorAll(".playBtn");
+        for (let pla = 0; pla < plaBtn.length; pla++) {
+          plaBtn[pla].style.display = "block";
+        }
+}
+
 
  playBtn.addEventListener("click",()=>{
+
+    if (audio.onplaying) {
+        pauseBtn.style.display = 'block';
+    }else{
+        pauseBtn.style.display = 'none';
+    }
      let aud = document.querySelectorAll('audio');
      for (let a = 0; a < aud.length; a++) {
          aud[a].pause();
+         pauseBtnFunc();
+         playBtnFunc(); 
      }
+
      setTimeout(() => {
          audio.play();
          pauseBtn.style.display = 'block';
