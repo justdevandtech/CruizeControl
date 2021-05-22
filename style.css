@@ -1,6 +1,6 @@
 
 body {
-    background-color: #f1f1f1;
+    background-color: #474a4b;
 }
 
 header {
@@ -38,10 +38,10 @@ text-align: center;
  .pauseBtn {
     display: none;
 } 
-
+/* 
 #songsContainer {
      margin: 20px 0px;
-}
+} */
 
 #songsContainer h2 {
     font-size: 15px;

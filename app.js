@@ -46,7 +46,7 @@ const songs = [
 
 function musicApp() {
     let songItems = songs.map(song => {
-      return `<di id="songsContainer">
+      return `<div class="border shadow p-3 bg-light rounded" id="songsContainer">
          <div class="wrapper">
          <img  id="artistImg" src="img/vinyl.jpg" alt="">
          <div class="artistdecr mt-3">
