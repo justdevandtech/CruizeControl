@@ -1,6 +1,7 @@
 
 body {
     background-color: #474a4b;
+    
 }
 
 header {
@@ -42,6 +43,10 @@ text-align: center;
 #songsContainer {
      margin: 20px 0px;
 } */
+
+#songsContainer:last-child {
+    margin-bottom: 50px;
+}
 
 #songsContainer h2 {
     font-size: 15px;
