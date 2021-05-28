@@ -154,19 +154,14 @@ function audioBarGetClick(event) {
       artist_Img(); // artistimg function calls here
     }
  
-    setTimeout(() => {
+    
       audio.play();
       artistimg.classList.add("rotate_aristeimg");
-      audioUpdate = setInterval(audioTimeUpdate, 400); // calling the audioTimeUpdate func. here
-     /*  setInterval(() => {
-        audioTimeUpdate();
-        let currentTime = Math.floor(audio.currentTime);
-        progressbar.style.width = currentTime + "px";
-      }, 500); */
-
+      audioUpdate = setInterval(audioTimeUpdate, 400); //calling the audioTimeUpdate func. here
+     
       pauseBtn.style.display = "block";
       playBtn.style.display = "none";
-    }, 100);
+    
 
     audio.addEventListener("ended", () => {
       audio.currentTime = 0;
@@ -174,6 +169,7 @@ function audioBarGetClick(event) {
       pauseBtnFunc();
       playBtnFunc();
     });
+
   });
 
   pauseBtn.addEventListener("click", () => {
@@ -182,6 +178,7 @@ function audioBarGetClick(event) {
     playBtn.style.display = "block";
     pauseBtn.style.display = "none";
   });
+  
 }
 
 
