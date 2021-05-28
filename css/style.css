@@ -5,7 +5,7 @@ body {
 }
 
 header {
-    background: url(./img/hero-img.jpg)no-repeat center/cover;
+    background: url(../img/hero-img.jpg)no-repeat center/cover;
     height: 350px;
     position: relative;
     margin-bottom: 20px;
@@ -30,7 +30,6 @@ text-align: center;
 
 .wrapper{
     display: flex;
-    margin-bottom: 20px;
 }
 #box {
     position: relative;
@@ -82,10 +81,6 @@ animation: rotation 8s infinite linear;
   }
 }
 
-/* .pauseBtn {
-    visibility: hidden;
-}
- */
 
 .audiopopper {
     position: absolute;
@@ -141,11 +136,15 @@ animation: rotation 8s infinite linear;
     visibility: visible;
 }
 
-.ifram {
-    margin-bottom: 10px;
-    display: none;
+.audioBar {
+    width: 350px;
+    
+}
+.audiBar, .audio_progressBar {
+    height: 9px;
 }
 
-.ifram_show {
-    display: block;
+.audio_progressBar {
+    width: 0px;
+    background-color: green;
 }
