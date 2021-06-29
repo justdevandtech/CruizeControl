@@ -160,9 +160,9 @@ async function app() {
         aud[i].pause();
         pauseBtnFunc(); // pause function calls here
         playBtnFunc();
+        audio.play();
       }
 
-      audio.play();
       pausebtn.style.display = "block";
       playbtn.style.display = "none";
       setInterval(() => {
@@ -186,7 +186,7 @@ async function app() {
 
   }
   //******** */
-  
+
 }
 
 window.addEventListener("DOMContentLoaded", app);
