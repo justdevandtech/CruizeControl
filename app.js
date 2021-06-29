@@ -1,188 +1,194 @@
 const songs = [
   {
     id: 1,
-    desc: "cali",
-    aud: "./musicFolder/cali-1171.mp3",
+    song_title: "Ginger",
+    aud: "./musics/Wizkid-ft-Burna-Boy-Ginger.mp3",
+    original_song:
+      "https://audiomack.com/embed/song/wizkid/ginger?background=1&color=417505",
   },
   {
     id: 2,
-    desc: "cancion-triste",
-    aud: "./musicFolder/cancion-triste-1502.mp3",
+    song_title: "Blessed",
+    aud: "./musics/Wizkid-ft-Damian-Marley-Blessed.mp3",
+    original_song:
+      "https://audiomack.com/embed/song/wizkid/blessed?background=1&color=417505",
   },
   {
     id: 3,
-    desc: "dreamy-piano",
-    aud: "./musicFolder/dreamy-piano-soft-sound-ambient-background-4049.mp3",
+    song_title: "Jowo",
+    aud: "./musics/Davido-Jowo.mp3",
+    original_song:
+      "https://audiomack.com/embed/song/davido/jowo?background=1&color=417505",
   },
   {
     id: 4,
-    desc: "female-voice-and-electronica",
-    aud: "./musicFolder/female-voice-and-electronica-2-3496.mp3",
+    song_title: "for you",
+    aud: "./musics/Teni-For-You-ft-Davido.mp3",
+    original_song:
+      "https://audiomack.com/embed/song/tenientertainer/for-you?background=1",
   },
   {
     id: 5,
-    desc: "hip-hop-lo-fi-4387",
-    aud: "./musicFolder/hip-hop-lo-fi-4387.mp3",
+    song_title: "Piece in Me",
+    aud: "./musics/Wizkid-ft-Ella-Mai-Piece-Of-Me.mp3",
+    original_song:
+      "https://audiomack.com/embed/song/wizkid/piece-of-me?background=1&color=417505",
   },
   {
     id: 6,
-    desc: "mezhdunami-uncut-gems",
-    aud: "./musicFolder/mezhdunami-uncut-gems-1198.mp3",
+    song_title: "Longtime",
+    aud: "./musics/Wizkid-ft-Skepta-Longtime.mp3",
+    original_song:
+      "https://audiomack.com/embed/song/wizkid/longtime?background=1&color=417505",
   },
   {
     id: 7,
-    desc: "modular-ambient",
-    aud: "./musicFolder/modular-ambient-04-792.mp3",
-  },
-  {
-    id: 8,
-    desc: "texting",
-    aud: "./musicFolder/texting-audio.mp3",
+    song_title: "True Love",
+    aud: "./musics/Wizkid-ft-Tay-Iwar-Projexx-True-Love.mp3",
+    original_song:
+      "https://audiomack.com/embed/song/wizkid/true-love?background=1&color=417505",
   },
 ];
 
-function musicApp() {
-    let songItems = songs.map(song => {
-      return `<div class="border shadow p-3 bg-light rounded" id="songsContainer">
-         <div class="wrapper">
-         <img  id="artistImg" src="img/vinyl.jpg" alt="">
-         <div class="artistdecr mt-3">
-         <h2>${
-           song.aud[2].toUpperCase() +
-           "#" +
-           song.id +
-           " " +
-           song.aud.slice(9, 29)
-         }...</h2>
-         <p>${song.desc}</P>
-         <audio src=${song.aud}></audio>
-         <br/>
-         
-         </div>
-         </div>
-         <!-- wraper stop here -->
-         <!-- visualization start here-->
-         <div class="audioBar bg-secondary mx-auto mb-3 mt-2 rounded">
-         <span class="audio_currentTime m-2 float-start">00</span>
-         <div class="audio_progressBar rounded"></div>
-          <span class="audio_duration m-2 float-end">00</span>
-         </div>
-         <!-- visualization stop here-->
-         <button class="playBtn btn border border-success px-3"><i class="fas fa-play-circle"></i></button>
-          <button class="pauseBtn btn border border-success px-3"><i class="fas fa-pause-circle"></i></button>
-          <button class="border float-end border-success h-25 px-3"><i class="far fa-thumbs-up"></i><span>11111<span></button>
-           <button class="comment border float-end border-success me-2 h-25 px-3"><i class="far fa-comments"></i></button>
-          <hr>
-         </div>
-  `;
-    });
-    let musicUI = document.querySelector(".musicUI");
-    musicUI.innerHTML = songItems;
-for (let i = 0; i < songsContainer.length; i++) {
-  let audio = songsContainer[i].querySelector("audio");
-  let playBtn = songsContainer[i].querySelector(".playBtn");
-  let pauseBtn = songsContainer[i].querySelector(".pauseBtn");
-  let progressbar = songsContainer[i].querySelector(".audio_progressBar");
-  let artistimg = songsContainer[i].querySelector("#artistImg");
-  let audio_duration = songsContainer[i].querySelector(".audio_duration");
-  let audio_currentTime = songsContainer[i].querySelector(".audio_currentTime");
-  let audioBar = songsContainer[i].querySelector(".audioBar");
-  audioBar.addEventListener('click', audioBarGetClick)
+const audioBoxUI = document.querySelector(".audioBoxUI");
 
-  audio.onloadedmetadata = function () {
-    let audio_durationMinutes = parseInt(audio.duration/60);
-  let audio_durationSeconds = parseInt(audio.duration%60);
-  audio_duration.innerHTML = `${audio_durationMinutes}:${audio_durationSeconds}`
-  };
+async function app() {
+  let songsData = await songs
+    .map(song => {
+      return `<div class="music_card bg-white p-3 rounded mb-3 mt-4">
+           <div class="audioBox-container d-flex justify-content-between align-items-center">
+                 <div class="artistProfile-div d-flex align-items-center ">
+                <div class="play_pauseBtns me-2">
+                <span class="btn playbtn"><i class="fas fa-play"></i></span>
+                <span class="btn pausebtn"><i class="fas fa-pause"></i></span>
+                </div>
+                 <audio src=${song.aud}></audio>
+                <div class="artistprofile">
+                     <h4>${song.song_title}</h4>
+                    <p>MichaelKobrin</p>
+                </div>
+            </div>
+            <div class="d-flex align-items-center">
+            <div class="audioCurrentime"></div>
+            <div class="progresBar rounded mx-3">
+                <div class="audioProgress rounded"></div>
+            </div>
+            <div class="audioDuration ms-2">--.--</div>
+            </div>
+            <span class="border downloadbtn p-2 rounded">download</span>
+            <span class="text-success downloadicon fs-5"><i class="fas fa-cloud-download-alt"></i></span>
+            <div class="tagsToggler"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <!-- **** -->
+           <div class="moreInfocontainer">
+               <div class="moreInfobtns">
+                   <span class="border btn px-2"><i class="fas fa-play me-1 text-success"></i>111</span>
+                   <span class="border btn px-2"><i class="far fa-heart me-1 text-success"></i>222</span>
+                   <span class="border btn px-2"><i class="far fa-bookmark text-success"></i></span>
+                   <span class="border btn px-2"><i class="far fa-comment me-1 text-success"></i>56</span>
+               </div>
+           </div>
+           <!-- more info stop here -->
+        </div>`;
+    })
+    .join("");
+  audioBoxUI.innerHTML = songsData;
 
-  let audioBarSize = 350;
-  
-function audioBarGetClick(event) {
-  let mouseX = event.pageX - audioBar.offsetLeft;
-  let newTime = mouseX * audio.duration / audioBarSize;
-  audio.currentTime = newTime;
-  progressbar.style.width = mouseX + 'px';
-}
-  
-  function pauseBtnFunc() {
-    let paBtn = document.querySelectorAll(".pauseBtn");
-    for (let pb = 0; pb < paBtn.length; pb++) {
-      paBtn[pb].style.display = "none";
+  let music_card = document.querySelectorAll(".music_card");
+
+  for (let i = 0; i < music_card.length; i++) {
+    let playbtn = music_card[i].querySelector(".playbtn");
+    let pausebtn = music_card[i].querySelector(".pausebtn");
+    let audio = music_card[i].querySelector("audio");
+    let audioCurrentime = music_card[i].querySelector(".audioCurrentime");
+    let audioDuration = music_card[i].querySelector(".audioDuration");
+    let audioProgress = music_card[i].querySelector(".audioProgress");
+    let progresBar = music_card[i].querySelector(".progresBar");
+
+     progresBar.addEventListener("click", audioProgressBarGetClick); 
+        function audioProgressBarGetClick(event) {
+          let mouseX = event.pageX - progresBar.offsetLeft;
+          let newTime = (mouseX * audio.duration) / audioBarSize;
+          audio.currentTime = newTime;
+          audioProgress.style.marginLeft = mouseX + "px";
+        }
+
+    //Automatically display audio currentTime when user click on play button
+    function audioTimeUpdate() {
+      if (!audio.ended) {
+        let audioTimeUpdate_durationMinutes = parseInt(audio.currentTime / 60);
+        let audioTimeUpdate_durationSeconds = parseInt(audio.currentTime % 60);
+        audioCurrentime.innerHTML = `${audioTimeUpdate_durationMinutes}:${audioTimeUpdate_durationSeconds}`;
+        let size = parseInt(
+          (audio.currentTime * audioBarSize) / audio.duration
+        );
+        audioProgress.style.marginLeft = size + "px";
+      } else {
+        audioCurrentime.innerHTML = 0.0;
+      }
     }
-  }
+    /* **** */
 
-  function playBtnFunc() {
-    let plaBtn = document.querySelectorAll(".playBtn");
-    for (let pla = 0; pla < plaBtn.length; pla++) {
-      plaBtn[pla].style.display = "block";
+    //display audio duration
+    audio.onloadedmetadata = function () {
+      let audio_durationMinutes = parseInt(audio.duration / 60);
+      let audio_durationSeconds = parseInt(audio.duration % 60);
+      audioDuration.innerHTML = `${audio_durationMinutes}:${audio_durationSeconds}`;
+    };
+
+    let audioBarSize = 350;
+
+    function pauseBtnFunc() {
+      let paBtn = document.querySelectorAll(".pausebtn");
+      for (let pb = 0; pb < paBtn.length; pb++) {
+        paBtn[pb].style.display = "none";
+      }
     }
-  }
 
-  /* ****************** */
-  
-
-  //Automatically display audio currentTime user click play button
-  function audioTimeUpdate() {
-    if (!audio.ended) {
-       let audioTimeUpdate_durationMinutes = parseInt(audio.currentTime / 60);
-       let audioTimeUpdate_durationSeconds = parseInt(audio.currentTime % 60);
-       audio_currentTime.innerHTML = `${audioTimeUpdate_durationMinutes}:${audioTimeUpdate_durationSeconds}`;
-       let size = parseInt(audio.currentTime * audioBarSize/audio.duration)
-       progressbar.style.width = size + 'px';
-    } else{
-      audio_currentTime.innerHTML = 0.00;
+    function playBtnFunc() {
+      let plaBtn = document.querySelectorAll(".playbtn");
+      for (let pla = 0; pla < plaBtn.length; pla++) {
+        plaBtn[pla].style.display = "block";
+      }
     }
-  }
 
+    playbtn.addEventListener("click", () => {
+      pausebtn.style.display = "block";
+      playbtn.style.display = "none";
+      let aud = document.querySelectorAll("audio");
+      for (let i = 0; i < aud.length; i++) {
+        aud[i].pause();
+        pauseBtnFunc(); // pause function calls here
+        playBtnFunc();
+      }
 
-/* ********************** */
-
-  //Artist image rotate when user click playbtn but when another playbtn get clicked the prev. artist img keep rotating instead of to stop 4 de current one. When playbtn get clicked, this function is to check if the div already has a Artist image rotating class func. if ? "remove it" : "do nothing"
-  function artist_Img() {
-    let artist_Img = document.querySelectorAll("#artistImg");
-    artist_Img.forEach(artistImgs => {
-      artistImgs.classList.contains("rotate_aristeimg") ? artistImgs.classList.remove("rotate_aristeimg") : artistImgs.classList.add(/* nothing */);
-    });
-  }
-
-  playBtn.addEventListener("click", () => {
-    let aud = document.querySelectorAll("audio");
-    for (let a = 0; a < aud.length; a++) {
-      aud[a].pause();
-      pauseBtnFunc(); // pause function calls here
-      playBtnFunc(); // playbtn function calls here
-      artist_Img(); // artistimg function calls here
-    }
- 
-    
       audio.play();
-      artistimg.classList.add("rotate_aristeimg");
-      audioUpdate = setInterval(audioTimeUpdate, 400); //calling the audioTimeUpdate func. here
-     
-      pauseBtn.style.display = "block";
-      playBtn.style.display = "none";
-    
+      pausebtn.style.display = "block";
+      playbtn.style.display = "none";
+      setInterval(() => {
+        audioTimeUpdate();
+      }, 400);
+    });
+    /* playbtn stop here */
+
+    pausebtn.addEventListener("click", () => {
+      audio.pause();
+      pausebtn.style.display = "none";
+      playbtn.style.display = "block";
+    });
 
     audio.addEventListener("ended", () => {
       audio.currentTime = 0;
-      artistimg.classList.remove("rotate_aristeimg");
-      pauseBtnFunc();
-      playBtnFunc();
+      playbtn.style.display = "block";
+      pausebtn.style.display = "none";
     });
 
-  });
 
-  pauseBtn.addEventListener("click", () => {
-    audio.pause();
-    artistimg.classList.remove("rotate_aristeimg");
-    playBtn.style.display = "block";
-    pauseBtn.style.display = "none";
-  });
+  }
+  //******** */
   
 }
 
-
-}
-window.addEventListener("DOMContentLoaded", musicApp)
+window.addEventListener("DOMContentLoaded", app);
 
 

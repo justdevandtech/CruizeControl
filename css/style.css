@@ -1,150 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    background-color: #474a4b;
-    
+    background-color: whitesmoke;
 }
 
-header {
-    background: url(../img/hero-img.jpg)no-repeat center/cover;
-    height: 350px;
+h4,
+p {
+    padding: 0;
+    margin: 5px;
+}
+
+.progresBar {
+    height: 5px;
+    width: 350px;
+    background-color: gray;
+    cursor: pointer;
     position: relative;
-    margin-bottom: 20px;
-    
-}
-
-.header_layer {
-background-color: rgba(0, 0, 0, 0.7);
-position: absolute;
-top: 0;
-bottom: 0;
-right: 0;
-left: 0;
-color: white;
-text-align: center;
-}
-
-.header_layer p{
-    margin-top: 100px;
-    padding: 10px;
-}
-
-.wrapper{
-    display: flex;
-}
-#box {
-    position: relative;
-}
-
- .pauseBtn {
     display: none;
-} 
-
-
-#songsContainer:last-child {
-    margin-bottom: 50px;
 }
 
-#songsContainer h2 {
-    font-size: 15px;
+.downloadbtn {
+    display: none;
 }
 
-#imgdiv img{
-    position: relative;
-}
-
-#imgdiv span{
-    position: absolute;
-    left: 50px;
-    background-color: green;
-    top: 50px;
-}
-
-#artistImg {
+.audioProgress {
+    height: 15px;
+    width: 10px;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-right: 2rem;
-}
-
-.rotate_aristeimg {
-animation: rotation 8s infinite linear;
-}
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
-
-
-.audiopopper {
+    margin-left: 0;
+    background-color: green;
     position: absolute;
-    background-color: rgb(21, 95, 70);
-    color: white;
-   /*  top: 180px; */
-    width: 60%;
-    left: 50px;
-    right: 50px;
-    bottom: 50px;
-    padding: 20px;
-    position: fixed;
+    top: -5px;
+    bottom: -25px;
 }
-@media (max-width: 600px){
-    .audiopopper{
-        width: 100%;
-         left: 10px;
-        right: 10px;
-        
+
+@media  (min-width: 768px){
+    .progresBar{
+        display: block;
+    }
+    .downloadbtn {
+        display: block;
+    }
+
+    .downloadicon {
+        display: none;
     }
 }
 
-.commentbox {
-    position: absolute;
-    top: 180px;
-    width: 60%;
-    left: 90px;
-    right: 50px;
+.pausebtn {
+    display: none;
+}
+
+.play_pauseBtns {
+    border: 3px solid green;
+    border-radius: 50%;
+}
+
+.moreInfocontainer {
+    background-color: #f7f7f7;
     padding: 20px;
-    border: 1px solid;
-    background-color: white;
-}
-@media only screen and (max-width: 600px) {
-  .commentbox{
-      width: 100%;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      position: fixed;
-  }
-}
-.showtime, .audiopopper, .commentbox{
-    visibility: hidden;
-    font-weight: bolder;
-}
-.showtime {
-    font-size: 15px;
-    font-weight: bolder;
-}
-
-.show {
-    visibility: visible;
-}
-
-.audioBar {
-    width: 350px;
-    
-}
-.audiBar, .audio_progressBar {
-    height: 9px;
-}
-
-.audio_progressBar {
-    width: 0px;
-    background-color: green;
 }
