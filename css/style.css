@@ -6,6 +6,7 @@
 
 body {
     background-color: whitesmoke;
+    position: relative;
 }
 
 h4,
@@ -63,4 +64,117 @@ p {
 .moreInfocontainer {
     background-color: #f7f7f7;
     padding: 20px;
+}
+
+.audioBoxUI {
+    position: relative;
+}
+/* loader styling */
+
+.loader_layout {
+ background-color: rgba(0, 0, 0, 0.7);
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ left: 0;
+ right: 0;
+}
+
+.loader_layout h4 {
+    top: 300px;
+    position: absolute;
+    top: 100px;
+}
+
+.loader {
+    transform: translate(-50%, -50%) rotate(45deg);
+   position: fixed;
+   width: 100px;
+   height: 100px;
+   top: 300px;
+   left: 50%;
+
+    animation: animate 1s linear infinite
+}
+
+.loader span {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #f00;
+    animation: rotate 1s linear infinite
+}
+
+
+.loader span:nth-child(1) {
+    top: 0;
+    left: 0;
+    background: #f79f1f
+}
+
+.loader span:nth-child(2) {
+    top: 0;
+    right: 0;
+    background: #28642b
+}
+
+.loader span:nth-child(3) {
+    bottom: 0;
+    left: 0;
+    background: #2c8d41
+}
+
+.loader span:nth-child(4) {
+    bottom: 0;
+    right: 0;
+    background: #a3cb38
+}
+
+@keyframes animate {
+    0% {
+        width: 100px;
+        height: 100px
+    }
+
+    10% {
+        width: 100px;
+        height: 100px
+    }
+
+    50% {
+        width: 150px;
+        height: 150px
+    }
+
+    90% {
+        width: 100px;
+        height: 100px
+    }
+
+    100% {
+        width: 100px;
+        height: 100px
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    10% {
+        transform: rotate(0deg)
+    }
+
+    60% {
+        transform: rotate(90deg)
+    }
+
+    90% {
+        transform: rotate(90deg)
+    }
+
+    100% {
+        transform: rotate(90deg)
+    }
 }

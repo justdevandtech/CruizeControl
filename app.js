@@ -50,6 +50,15 @@ const songs = [
   },
 ];
 
+const loader_layout = document.querySelector(".loader_layout");
+
+document.onreadystatechange = function () {
+  if (document.readyState === "interactive") {
+    setTimeout(() => {
+      loader_layout.style.display = "none";
+    }, 200);
+  }
+};
 
 function musicApp() {
   let songsData = songs
