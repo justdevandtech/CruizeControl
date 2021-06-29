@@ -50,10 +50,9 @@ const songs = [
   },
 ];
 
-const audioBoxUI = document.querySelector(".audioBoxUI");
 
-async function app() {
-  let songsData = await songs
+function musicApp() {
+  let songsData = songs
     .map(song => {
       return `<div class="music_card bg-white p-3 rounded mb-3 mt-4">
            <div class="audioBox-container d-flex justify-content-between align-items-center">
@@ -79,7 +78,6 @@ async function app() {
             <span class="text-success downloadicon fs-5"><i class="fas fa-cloud-download-alt"></i></span>
             <div class="tagsToggler"><i class="fas fa-chevron-down"></i></div>
             </div>
-            <!-- **** -->
            <div class="moreInfocontainer">
                <div class="moreInfobtns">
                    <span class="border btn px-2"><i class="fas fa-play me-1 text-success"></i>111</span>
@@ -92,6 +90,7 @@ async function app() {
         </div>`;
     })
     .join("");
+  const audioBoxUI = document.querySelector(".audioBoxUI");
   audioBoxUI.innerHTML = songsData;
 
   let music_card = document.querySelectorAll(".music_card");
@@ -105,13 +104,20 @@ async function app() {
     let audioProgress = music_card[i].querySelector(".audioProgress");
     let progresBar = music_card[i].querySelector(".progresBar");
 
-     progresBar.addEventListener("click", audioProgressBarGetClick); 
-        function audioProgressBarGetClick(event) {
-          let mouseX = event.pageX - progresBar.offsetLeft;
-          let newTime = (mouseX * audio.duration) / audioBarSize;
-          audio.currentTime = newTime;
-          audioProgress.style.marginLeft = mouseX + "px";
-        }
+    //display audio duration
+    audio.onloadedmetadata = function () {
+      let audio_durationMinutes = parseInt(audio.duration / 60);
+      let audio_durationSeconds = parseInt(audio.duration % 60);
+      audioDuration.innerHTML = `${audio_durationMinutes}:${audio_durationSeconds}`;
+    };
+
+    progresBar.addEventListener("click", audioProgressBarGetClick);
+    function audioProgressBarGetClick(event) {
+      let mouseX = event.pageX - progresBar.offsetLeft;
+      let newTime = (mouseX * audio.duration) / audioBarSize;
+      audio.currentTime = newTime;
+      audioProgress.style.marginLeft = mouseX + "px";
+    }
 
     //Automatically display audio currentTime when user click on play button
     function audioTimeUpdate() {
@@ -128,13 +134,6 @@ async function app() {
       }
     }
     /* **** */
-
-    //display audio duration
-    audio.onloadedmetadata = function () {
-      let audio_durationMinutes = parseInt(audio.duration / 60);
-      let audio_durationSeconds = parseInt(audio.duration % 60);
-      audioDuration.innerHTML = `${audio_durationMinutes}:${audio_durationSeconds}`;
-    };
 
     let audioBarSize = 350;
 
@@ -153,21 +152,27 @@ async function app() {
     }
 
     playbtn.addEventListener("click", () => {
-      pausebtn.style.display = "block";
-      playbtn.style.display = "none";
       let aud = document.querySelectorAll("audio");
       for (let i = 0; i < aud.length; i++) {
         aud[i].pause();
         pauseBtnFunc(); // pause function calls here
         playBtnFunc();
-        audio.play();
       }
 
+      audio.play();
       pausebtn.style.display = "block";
       playbtn.style.display = "none";
       setInterval(() => {
         audioTimeUpdate();
       }, 400);
+      pausebtn.style.display = "block";
+      playbtn.style.display = "none";
+
+      audio.addEventListener("ended", () => {
+        audio.currentTime = 0;
+        playbtn.style.display = "block";
+        pausebtn.style.display = "none";
+      });
     });
     /* playbtn stop here */
 
@@ -176,19 +181,10 @@ async function app() {
       pausebtn.style.display = "none";
       playbtn.style.display = "block";
     });
-
-    audio.addEventListener("ended", () => {
-      audio.currentTime = 0;
-      playbtn.style.display = "block";
-      pausebtn.style.display = "none";
-    });
-
-
   }
   //******** */
-
 }
 
-window.addEventListener("DOMContentLoaded", app);
+window.addEventListener("DOMContentLoaded", musicApp);
 
 
