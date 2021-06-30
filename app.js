@@ -188,7 +188,7 @@ function musicApp() {
         playBtnFunc();
       }
 
-      if (audio.duration) {
+      if (audio.duration == true || audio.duration === true) {
         audioloader.style.display = "none";
       } else {
         progresBar.style.display = "none";
