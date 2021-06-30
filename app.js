@@ -2,6 +2,7 @@ const songs = [
   {
     id: 1,
     song_title: "Ginger",
+    artistname: "wizkid",
     aud: "./musics/Wizkid-ft-Burna-Boy-Ginger.mp3",
     original_song:
       "https://audiomack.com/embed/song/wizkid/ginger?background=1&color=417505",
@@ -9,6 +10,7 @@ const songs = [
   {
     id: 2,
     song_title: "Blessed",
+    artistname: "wizkid",
     aud: "./musics/Wizkid-ft-Damian-Marley-Blessed.mp3",
     original_song:
       "https://audiomack.com/embed/song/wizkid/blessed?background=1&color=417505",
@@ -16,6 +18,7 @@ const songs = [
   {
     id: 3,
     song_title: "Jowo",
+    artistname: "davido",
     aud: "./musics/Davido-Jowo.mp3",
     original_song:
       "https://audiomack.com/embed/song/davido/jowo?background=1&color=417505",
@@ -23,6 +26,7 @@ const songs = [
   {
     id: 4,
     song_title: "for you",
+    artistname: "Teni ft davido",
     aud: "./musics/Teni-For-You-ft-Davido.mp3",
     original_song:
       "https://audiomack.com/embed/song/tenientertainer/for-you?background=1",
@@ -30,6 +34,7 @@ const songs = [
   {
     id: 5,
     song_title: "Piece in Me",
+    artistname: "wizkid",
     aud: "./musics/Wizkid-ft-Ella-Mai-Piece-Of-Me.mp3",
     original_song:
       "https://audiomack.com/embed/song/wizkid/piece-of-me?background=1&color=417505",
@@ -37,6 +42,7 @@ const songs = [
   {
     id: 6,
     song_title: "Longtime",
+    artistname: "wizkid",
     aud: "./musics/Wizkid-ft-Skepta-Longtime.mp3",
     original_song:
       "https://audiomack.com/embed/song/wizkid/longtime?background=1&color=417505",
@@ -44,6 +50,7 @@ const songs = [
   {
     id: 7,
     song_title: "True Love",
+    artistname: "wizkid",
     aud: "./musics/Wizkid-ft-Tay-Iwar-Projexx-True-Love.mp3",
     original_song:
       "https://audiomack.com/embed/song/wizkid/true-love?background=1&color=417505",
@@ -51,6 +58,13 @@ const songs = [
 ];
 
 const loader_layout = document.querySelector(".loader_layout");
+let barsongtitle = document.querySelector(".barsongtitle");
+let barartistname = document.querySelector(".barartistname");
+let baraudio = document.querySelector(".baraudio");
+
+ let audioProgress_bar = document.querySelector(".audioProgress_bar");
+ let progresBar_bar = document.querySelector(".progresBar_bar");
+
 
 document.onreadystatechange = function () {
   if (document.readyState === "interactive") {
@@ -58,25 +72,28 @@ document.onreadystatechange = function () {
       loader_layout.style.display = "none";
     }, 200);
   }
-};
+}; 
 
 function musicApp() {
   let songsData = songs
-    .map(song => {
+    .map((song, index) => {
+      let songsNum = index + 1;
       return `<div class="music_card bg-white p-3 rounded mb-3 mt-4">
            <div class="audioBox-container d-flex justify-content-between align-items-center">
                  <div class="artistProfile-div d-flex align-items-center ">
+                 <span class="songsNum ms-0 me-2 mb-2 text-secondary">#${songsNum}</span>
                 <div class="play_pauseBtns me-2">
                 <span class="btn playbtn"><i class="fas fa-play"></i></span>
                 <span class="btn pausebtn"><i class="fas fa-pause"></i></span>
                 </div>
                  <audio src=${song.aud}></audio>
                 <div class="artistprofile">
-                     <h4>${song.song_title}</h4>
-                    <p>MichaelKobrin</p>
+                     <h4 class="songtitle text-secondary">${song.song_title}</h4>
+                    <p class="artistname">${song.artistname}</p>
                 </div>
             </div>
             <div class="d-flex align-items-center">
+            <strong class="audioloader mx-3">Loading Audio...</strong>
             <div class="audioCurrentime"></div>
             <div class="progresBar rounded mx-3">
                 <div class="audioProgress rounded"></div>
@@ -112,6 +129,9 @@ function musicApp() {
     let audioDuration = music_card[i].querySelector(".audioDuration");
     let audioProgress = music_card[i].querySelector(".audioProgress");
     let progresBar = music_card[i].querySelector(".progresBar");
+    let songtitle = music_card[i].querySelector(".songtitle");
+    let artistname = music_card[i].querySelector(".artistname");
+    let audioloader = music_card[i].querySelector(".audioloader");
 
     //display audio duration
     audio.onloadedmetadata = function () {
@@ -168,6 +188,13 @@ function musicApp() {
         playBtnFunc();
       }
 
+      if (audio.duration) {
+        audioloader.style.display = "none";
+      } else {
+        progresBar.style.display = "none";
+        audioloader.style.display = "block";
+      }
+
       audio.play();
       pausebtn.style.display = "block";
       playbtn.style.display = "none";
@@ -176,6 +203,11 @@ function musicApp() {
       }, 400);
       pausebtn.style.display = "block";
       playbtn.style.display = "none";
+
+      barsongtitle.innerHTML = songtitle.textContent;
+      barartistname.innerHTML = artistname.textContent;
+      baraudio.src = audio.src;
+      console.log(baraudio);
 
       audio.addEventListener("ended", () => {
         audio.currentTime = 0;
@@ -192,6 +224,11 @@ function musicApp() {
     });
   }
   //******** */
+
+  let songIndex = 0;
+   barsongtitle.innerHTML = songs[songIndex].song_title
+   barartistname.innerHTML = songs[songIndex].artistname;
+   baraudio.src = songs[songIndex].aud;
 }
 
 window.addEventListener("DOMContentLoaded", musicApp);

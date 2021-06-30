@@ -6,7 +6,7 @@
 
 body {
     background-color: whitesmoke;
-    position: relative;
+    
 }
 
 h4,
@@ -17,6 +17,30 @@ p {
 
 .progresBar {
     height: 5px;
+    width: 350px;
+    background-color: gray;
+    cursor: pointer;
+    position: relative;
+    display: none;
+}
+
+.songsNum {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.audioloader span {
+    display: inline-block;
+     width: 20px;
+     height: 20px;
+     border-radius: 100%;
+     background-color: #405189;
+     margin: 35px 5px;
+     opacity: 0
+}
+
+.progresBar_bar {
+     height: 5px;
     width: 350px;
     background-color: gray;
     cursor: pointer;
@@ -39,8 +63,19 @@ p {
     bottom: -25px;
 }
 
+.audioProgress_bar {
+    height: 15px;
+    width: 10px;
+    border-radius: 50%;
+    margin-left: 0;
+    background-color: green;
+    position: absolute;
+    top: -5px;
+    bottom: -25px;
+}
+
 @media  (min-width: 768px){
-    .progresBar{
+    .progresBar, .progresBar_bar{
         display: block;
     }
     .downloadbtn {
@@ -61,6 +96,11 @@ p {
     border-radius: 50%;
 }
 
+
+.artistprofile p{
+    color:#8088a6;
+}
+
 .moreInfocontainer {
     background-color: #f7f7f7;
     padding: 20px;
@@ -69,11 +109,37 @@ p {
 .audioBoxUI {
     position: relative;
 }
+
+.audiobar {
+    display: flex;
+    align-items: center;
+    background-color: #201f1f;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.progresbox {
+    display: flex;
+    align-items: center;
+}
+
+.audiobar h3, p{
+    padding: 0;
+    margin: 0;
+}
+
+.audioloader {
+    display: none;
+    font-weight: bold;
+}
+
 /* loader styling */
 
 .loader_layout {
  background-color: rgba(0, 0, 0, 0.7);
- position: absolute;
+ position: fixed;
  top: 0;
  bottom: 0;
  left: 0;
