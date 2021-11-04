@@ -61,38 +61,31 @@
   <span>22</span>
 </div>
 
-    <div class="container-fluid">
-      <div class="audioBoxUI">
-        
-      </div>
-<div class="loader_layout">
- <div class="loader"> 
-   <span></span> 
-  <span></span> 
-  <span></span> 
-  <span></span>
+<div style="margin-bottom: 150px;" class="container audioBoxUI border">
+
 </div>
-<div style="margin-top: 380px; z-index: 2222;">
-<h1 class="text-center text-white">Loading...</h1>
-</div>
-</div>
+<div class="audio_control_mb fixed-bottom bg-white py-4 pe-2 border">
+  <p class="audio_props col-5 mx-auto">Davido - sweet love</p>
+  <audio id="audioBar" src=""></audio>
+<div class=" d-sm-flex">
+  <div class="skippers d-none d-sm-flex w-25 btn">
+    <i class="fa fa-backward p-3"></i>
+    <i class="barplayBtn fa fa-play bg-success p-3 rounded-circle"></i>
+    <i class="nextBtn fa fa-forward p-3"></i>
+  </div>
+  <div class="w-100 w-lg-50 p-2 d-flex align-items-center">
+    <span class="audiobar_currentTime me-3">12:34</span>
+    <div class="b-progress">
+      <div class="b-progressInner"></div>
     </div>
+    <span class="audiobar_durationTime ms-3">12:34</span>
+  </div>
+
+</div>
+</div>
 
 
-    <div class="audiobar pt-4 pb-2 px-3">
-  <audio class="baraudio" src=""></audio>
-  <div class="artistprofile">
-    <h3 class="barsongtitle">song title</h3>
-    <p class="barartistname">artist name</p>
-  </div>
-  <div class="progresbox mx-5">
- <div class="progresBar_bar rounded mx-3">
-       <div class="audioProgress_bar rounded"></div>
-    </div>
-     <div class="currentbar">00 -</div>
-    <div class="durationbar ms-1">00</div>
-  </div>
-</div>
+  
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>

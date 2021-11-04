@@ -58,21 +58,18 @@ const songs = [
 ];
 
 const loader_layout = document.querySelector(".loader_layout");
-let barsongtitle = document.querySelector(".barsongtitle");
-let barartistname = document.querySelector(".barartistname");
-let baraudio = document.querySelector(".baraudio");
 
  let audioProgress_bar = document.querySelector(".audioProgress_bar");
  let progresBar_bar = document.querySelector(".progresBar_bar");
 
 
-document.onreadystatechange = function () {
+/* document.onreadystatechange = function () {
   if (document.readyState === "interactive") {
     setTimeout(() => {
       loader_layout.style.display = "none";
     }, 200);
   }
-}; 
+};  */
 
 function musicApp() {
   let songsData = songs
@@ -94,10 +91,10 @@ function musicApp() {
             </div>
             <div class="d-flex align-items-center">
             <strong class="audioloader mx-3">Loading Audio...</strong>
-            <div class="audioCurrentime"></div>
-            <div class="progresBar rounded mx-3">
+            <!---<div class="audioCurrentime"></div>--->
+            <!---<div class="progresBar rounded mx-3">
                 <div class="audioProgress rounded"></div>
-            </div>
+            </div>--->
             <div class="audioDuration ms-2">--.--</div>
             </div>
             <span class="border downloadbtn p-2 rounded">download</span>
@@ -113,7 +110,8 @@ function musicApp() {
                </div>
            </div>
            <!-- more info stop here -->
-        </div>`;
+        </div>
+        `;
     })
     .join("");
   const audioBoxUI = document.querySelector(".audioBoxUI");
@@ -140,24 +138,24 @@ function musicApp() {
       audioDuration.innerHTML = `${audio_durationMinutes}:${audio_durationSeconds}`;
     };
 
-    progresBar.addEventListener("click", audioProgressBarGetClick);
+   /*  progresBar.addEventListener("click", audioProgressBarGetClick);
     function audioProgressBarGetClick(event) {
       let mouseX = event.pageX - progresBar.offsetLeft;
       let newTime = (mouseX * audio.duration) / audioBarSize;
       audio.currentTime = newTime;
       audioProgress.style.marginLeft = mouseX + "px";
-    }
+    } */
 
     //Automatically display audio currentTime when user click on play button
     function audioTimeUpdate() {
       if (!audio.ended) {
         let audioTimeUpdate_durationMinutes = parseInt(audio.currentTime / 60);
         let audioTimeUpdate_durationSeconds = parseInt(audio.currentTime % 60);
-        audioCurrentime.innerHTML = `${audioTimeUpdate_durationMinutes}:${audioTimeUpdate_durationSeconds}`;
+        /* audioCurrentime.innerHTML = `${audioTimeUpdate_durationMinutes}:${audioTimeUpdate_durationSeconds}`; */
         let size = parseInt(
           (audio.currentTime * audioBarSize) / audio.duration
         );
-        audioProgress.style.marginLeft = size + "px";
+        /* audioProgress.style.marginLeft = size + "px"; */
       } else {
         audioCurrentime.innerHTML = 0.0;
       }
@@ -204,12 +202,13 @@ function musicApp() {
       pausebtn.style.display = "block";
       playbtn.style.display = "none";
 
-      barsongtitle.innerHTML = songtitle.textContent;
+     /*  barsongtitle.innerHTML = songtitle.textContent;
       barartistname.innerHTML = artistname.textContent;
-      baraudio.src = audio.src;
-      console.log(baraudio);
-
+      baraudio.src = audio.src; */
+      
+let indext = 1
       audio.addEventListener("ended", () => {
+        indext = indext + 1;
         audio.currentTime = 0;
         playbtn.style.display = "block";
         pausebtn.style.display = "none";
@@ -224,13 +223,54 @@ function musicApp() {
     });
   }
   //******** */
-
   let songIndex = 0;
-   barsongtitle.innerHTML = songs[songIndex].song_title
-   barartistname.innerHTML = songs[songIndex].artistname;
-   baraudio.src = songs[songIndex].aud;
+  let baraudio = document.getElementById("audioBar");
+  
+  baraudioFunc(baraudio, songs, songIndex);
 }
 
 window.addEventListener("DOMContentLoaded", musicApp);
+
+
+function baraudioFunc(audio, song, index) {
+  let audio_props = document.querySelector(".audio_props")
+  audio.src = song[index].aud;
+  audio_props.innerHTML = `${song[index].artistname} - ${song[index].song_title}`
+  const barplayBtn = document.querySelector(".barplayBtn");
+  barplayBtn.addEventListener("click", () => {
+    if (barplayBtn.classList.contains("fa-play")) {
+      audio.play();
+      barplayBtn.classList.remove("fa-play");
+      barplayBtn.classList.add("fa-pause");
+    } else if (barplayBtn.classList.contains("fa-pause")) {
+      audio.pause();
+      barplayBtn.classList.remove("fa-pause");
+      barplayBtn.classList.add("fa-play");
+    }
+  });
+  /* nextbtn */
+  let nextBtn = document.querySelector(".nextBtn");
+  nextBtn.addEventListener("click", () => {
+    index = index + 1;
+    audio.src = song[index].aud;
+    audio_props.innerHTML = `${song[index].artistname} - ${song[index].song_title}`;
+    audio.play();
+    barplayBtn.classList.remove("fa-play");
+    barplayBtn.classList.add("fa-pause");
+  });
+
+const b_progress = document.querySelector(".b-progress");
+const b_progressInner = document.querySelector(".b-progressInner");
+  b_progress.addEventListener("click", audioProgressBarGetClick);
+  function audioProgressBarGetClick(event) {
+    let mouseX = event.pageX - b_progress.offsetLeft;
+    let newTime = (mouseX * audio.duration) / 370;
+    audio.currentTime = newTime;
+    b_progressInner.style.width = mouseX + "px";
+  } 
+}
+
+
+
 
 

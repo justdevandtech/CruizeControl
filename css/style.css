@@ -24,6 +24,35 @@ p {
     display: none;
 }
 
+.b-progress {
+    height: 10px;
+    width: 370px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+.b-progressInner {
+    height: 10px;
+    width: 15px;
+    border-radius: 10px;
+    background-color: #2c8d41;
+}
+
+.modal-backdrop {
+    display: none !important;
+}
+
+.modal {
+    bottom: 0!important;
+}
+
+/* .b-progressInner {
+    height: 10px;
+    background-color: #28642b;
+    
+    border-radius: 10px;
+} */
+
 .songsNum {
     font-size: 2rem;
     font-weight: bold;
